@@ -38,6 +38,7 @@ mean(ozone[good])
 # get the Ozone, Solar.R and Temp columns from the dataframe
 columns <- c(1,2,4)
 triad <- airquality[,columns]
+names(triad)
 good <- complete.cases(triad)
 hold <- triad[good, ][,1:3]
 
@@ -49,18 +50,18 @@ mean(hold[t,2])
 # What is the mean of "Temp" when "Month" is equal to 6? 
 columns <- c(4,5)
 duple <- airquality[,columns]  
-m <- duple[,2] == 6
-mean(duple[m,1])
+names(duple)
+month <- duple[,2] == 6
+mean(duple[month,1])
 
 # What was the maximum ozone value in the month of May (i.e. Month = 5)?
 columns <- c(1,5)
 duple <- airquality[,columns]  
+names(duple)
 good <- complete.cases(duple)
-m <- duple[good,][,2] == 5
-G <- complete.cases(duple)
-max(duple[G,1])
+hold <- duple[good, ][,1:2]
 
+month_subset <- hold[,2] == 5
+ozone_vector <- hold[month_subset,1]
+max(ozone_vector) 
 
-
-
-sink("sink_utility.txt")
